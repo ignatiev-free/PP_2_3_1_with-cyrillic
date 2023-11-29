@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html th:lang="ru" th:encoding="UTF-8" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>New User</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom right, #3498db, #9b59b6);
+        color: #fff;
+        font-family: 'Arial', sans-serif;
+    }
+</style>
+<body>
+
+<form th:method="POST" th:action="@{/create}" th:object="${user}">
+    <label for="Surname">Фамилия</label>
+    <input type="text" th:field="*{surname}" id="Surname">
+    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
+
+
+    <label for="Name">Имя</label>
+    <input type="text" th:field="*{name}" id="Name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+    <label for="Age">Возраст</label>
+    <input type="text" th:field="*{age}" id="Age">
+    <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+
+    <input type="submit" value="Добавить"/>
+</form>
+
+</body>
+</html>

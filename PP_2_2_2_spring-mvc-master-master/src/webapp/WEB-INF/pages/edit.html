@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom right, #3498db, #9b59b6);
+        color: #fff;
+        font-family: 'Arial', sans-serif;
+    }
+</style>
+<body>
+<form th:method="POST" th:action="@{/update}" th:object="${user}">
+
+    <label for="Surname">Фамилия</label>
+    <input type="text" th:field="*{surname}" id="Surname"/>
+    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="error"></span>
+
+    <label for="Name">Имя</label>
+    <input type="text" th:field="*{name}" id="Name"/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+
+    <label for="Age">Возраст</label>
+    <input type="text" th:field="*{age}" id="Age"/>
+    <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error"></span>
+
+    <input type="hidden" th:field="*{id}"/>
+
+    <input type="submit" value="Обновить"/>
+</form>
+
+</body>
+</html>
